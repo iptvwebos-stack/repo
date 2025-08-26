@@ -5,87 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IPTV Premium - Abonnement Annuel 200 Dhs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Lite YouTube Embed CSS -->
-    <style>
-        /* Lite YouTube Embed Styles */
-        .lite-youtube {
-            position: relative;
-            display: block;
-            overflow: hidden;
-            max-width: 100%;
-            background-color: #000;
-        }
-
-        .lite-youtube::before {
-            content: '';
-            display: block;
-            padding-bottom: 56.25%; /* 16:9 ratio */
-        }
-
-        .lite-youtube iframe {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            border: 0;
-        }
-
-        .lite-youtube .lty-playbtn {
-            width: 68px;
-            height: 48px;
-            position: absolute;
-            cursor: pointer;
-            transform: translate3d(-50%, -50%, 0);
-            top: 50%;
-            left: 50%;
-            z-index: 1;
-            background-color: transparent;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24 27 14v20" fill="white"/></svg>');
-            filter: grayscale(100%);
-            transition: filter .1s cubic-bezier(0, 0, 0.2, 1);
-            border: none;
-        }
-
-        .lite-youtube:hover .lty-playbtn {
-            filter: none;
-        }
-
-        .lite-youtube .lyt-visually-hidden {
-            clip: rect(0 0 0 0);
-            clip-path: inset(50%);
-            height: 1px;
-            overflow: hidden;
-            position: absolute;
-            white-space: nowrap;
-            width: 1px;
-        }
-    </style>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
             background: linear-gradient(135deg, #1a2a6c, #b21f1f, #001510);
+            background-attachment: fixed;
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
         }
         
         .container {
-            max-width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
         
         .page {
             display: none;
-            min-height: 100vh;
-            padding: 20px;
+            min-height: calc(100vh - 40px);
+            padding: 15px;
             animation: fadeIn 0.5s ease;
         }
         
@@ -95,76 +41,76 @@
         
         .header {
             text-align: center;
-            padding: 20px 0;
-            margin-bottom: 20px;
+            padding: 15px 0;
+            margin-bottom: 15px;
         }
         
         .header img {
             max-width: 100%;
             height: auto;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
         
         .content {
             background: rgba(0, 0, 0, 0.7);
-            border-radius: 20px;
-            padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
         }
         
         h1 {
-            font-size: 28px;
+            font-size: clamp(24px, 5vw, 32px);
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #ffcc00;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         h2 {
-            font-size: 22px;
-            margin-bottom: 15px;
+            font-size: clamp(18px, 4vw, 24px);
+            margin-bottom: 12px;
             color: #4fc3f7;
         }
         
         p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            font-size: clamp(16px, 2.5vw, 18px);
+            line-height: 1.5;
+            margin-bottom: 12px;
         }
         
         ul {
             padding-left: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         li {
-            margin-bottom: 10px;
-            font-size: 17px;
+            margin-bottom: 8px;
+            font-size: clamp(15px, 2.5vw, 17px);
         }
         
         .btn {
             display: block;
             width: 100%;
-            padding: 18px;
+            padding: 16px;
             background: linear-gradient(to right, #ff416c, #ff4b2b);
             color: white;
             text-align: center;
-            font-size: 20px;
+            font-size: clamp(16px, 3vw, 20px);
             font-weight: bold;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            margin: 30px 0;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            margin: 25px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             text-decoration: none;
         }
         
-        .btn:hover {
+        .btn:hover, .btn:active {
             transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
         
         .btn-whatsapp {
@@ -177,43 +123,39 @@
         
         .platforms {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
         }
         
         .platform {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 12px;
+            padding: 15px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
             border: 2px solid transparent;
         }
         
-        .platform:hover {
+        .platform:hover, .platform:active {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.15);
             border-color: #4fc3f7;
         }
         
-        .platform:active {
-            transform: translateY(0);
-        }
-        
         .platform img {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             object-fit: contain;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
+            padding: 8px;
             border-radius: 50%;
         }
         
         .platform h3 {
-            font-size: 18px;
+            font-size: clamp(14px, 2.5vw, 16px);
             color: #fff;
         }
         
@@ -222,8 +164,8 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 15px;
-            margin: 25px 0;
+            border-radius: 12px;
+            margin: 20px 0;
             background: #000;
         }
         
@@ -233,73 +175,88 @@
             left: 0;
             width: 100%;
             height: 100%;
+            border: none;
         }
         
         .app-list {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            margin: 30px 0;
+            gap: 15px;
+            margin: 25px 0;
         }
         
         .app-item {
             background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
+            padding: 12px;
+            border-radius: 8px;
             text-align: center;
-            width: 45%;
+            flex: 1 1 40%;
+            min-width: 140px;
         }
         
         .app-item h3 {
             color: #ffcc00;
-            font-size: 18px;
+            font-size: clamp(16px, 2.5vw, 18px);
         }
         
         .price-tag {
             background: linear-gradient(135deg, #ffcc00, #ff9800);
             color: #000;
             font-weight: bold;
-            font-size: 24px;
-            padding: 15px;
+            font-size: clamp(20px, 4vw, 24px);
+            padding: 12px;
             border-radius: 50px;
             text-align: center;
-            margin: 20px 0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin: 15px 0;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
         }
         
         .features {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 25px 0;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
         }
         
         .feature {
             background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
+            padding: 12px;
+            border-radius: 8px;
             text-align: center;
         }
         
         .feature i {
-            font-size: 28px;
+            font-size: clamp(24px, 5vw, 28px);
             color: #4fc3f7;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .feature h3 {
+            font-size: clamp(14px, 2.5vw, 16px);
+            margin-bottom: 5px;
+        }
+        
+        .feature p {
+            font-size: clamp(12px, 2vw, 14px);
         }
         
         .back-btn {
-            display: inline-block;
-            padding: 12px 25px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
             background: rgba(255, 255, 255, 0.1);
             color: white;
             border-radius: 50px;
-            margin-top: 15px;
+            margin-top: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: clamp(14px, 2.5vw, 16px);
         }
         
-        .back-btn:hover {
+        .back-btn:hover, .back-btn:active {
             background: rgba(255, 255, 255, 0.2);
         }
         
@@ -311,13 +268,13 @@
         .step-indicator {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
+            gap: 8px;
+            margin: 15px 0;
         }
         
         .step {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
         }
@@ -329,126 +286,100 @@
         .message {
             background: rgba(79, 195, 247, 0.1);
             border-left: 4px solid #4fc3f7;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 12px;
+            margin-bottom: 15px;
             border-radius: 4px;
         }
         
-        /* Bouton admin flottant */
-        .admin-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .youtube-thumbnail {
+            position: relative;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .youtube-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(40px, 10vw, 60px);
+            color: #ff0000;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
             transition: all 0.3s ease;
         }
         
-        .admin-btn:hover {
-            transform: scale(1.1);
+        .youtube-thumbnail:hover .play-button, .youtube-thumbnail:active .play-button {
+            color: #cc0000;
+            transform: translate(-50%, -50%) scale(1.1);
         }
         
-        /* Styles pour le tableau de bord admin */
-        .admin-form {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .admin-form h3 {
-            color: #ffcc00;
-            margin-bottom: 15px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        
-        .form-group input {
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            background: rgba(255, 255, 255, 0.9);
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
         }
         
-        .save-btn {
-            background: linear-gradient(to right, #25d366, #128c7e);
+        .modal-content {
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
             color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
+            font-size: 30px;
             cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        
-        .logout-btn {
-            background: linear-gradient(to right, #ff416c, #ff4b2b);
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        
-        .login-form {
-            max-width: 400px;
-            margin: 0 auto;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-        }
-        
-        /* Styles pour l'upload d'images */
-        .upload-container {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 15px;
+            align-items: center;
+            justify-content: center;
         }
         
-        .upload-preview {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
-            border-radius: 10px;
-            margin-top: 10px;
-        }
+        /* Media Queries pour différents appareils */
         
-        .upload-btn {
-            background: linear-gradient(to right, #ff416c, #ff4b2b);
-            color: white;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        @media (max-width: 480px) {
+        /* Téléphones petits (portrait) */
+        @media (max-width: 360px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .page {
+                padding: 10px;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
             .platforms {
                 grid-template-columns: 1fr;
+            }
+            
+            .platform img {
+                width: 50px;
+                height: 50px;
             }
             
             .features {
@@ -457,34 +388,111 @@
             
             .app-list {
                 flex-direction: column;
-                align-items: center;
             }
             
             .app-item {
                 width: 100%;
             }
-            
-            h1 {
-                font-size: 24px;
+        }
+        
+        /* Téléphones (portrait) */
+        @media (max-width: 480px) {
+            .platforms {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            p {
-                font-size: 16px;
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .step {
+                width: 8px;
+                height: 8px;
+            }
+        }
+        
+        /* Téléphones (paysage) et petites tablettes */
+        @media (min-width: 481px) and (max-width: 767px) {
+            .platforms {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Tablettes et petits écrans */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .container {
+                padding: 25px;
+            }
+            
+            .platforms {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Grands écrans */
+        @media (min-width: 1025px) {
+            .container {
+                padding: 30px;
+            }
+            
+            .platforms {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .features {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* Support des appareils iOS */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                min-height: -webkit-fill-available;
+            }
+            
+            .page {
+                min-height: -webkit-fill-available;
+            }
+        }
+        
+        /* Support de la navigation tactile */
+        @media (hover: none) {
+            .platform:hover {
+                transform: none;
+                background: rgba(255, 255, 255, 0.1);
+                border-color: transparent;
+            }
+            
+            .platform:active {
+                transform: translateY(-5px);
+                background: rgba(255, 255, 255, 0.15);
+                border-color: #4fc3f7;
+            }
+            
+            .btn:hover {
+                transform: none;
+            }
+            
+            .btn:active {
+                transform: translateY(-3px);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Bouton admin flottant -->
-    <div class="admin-btn" id="adminButton">
-        <i class="fas fa-cog"></i>
-    </div>
-
     <div class="container">
         <!-- Page 1 -->
         <div id="page1" class="page active">
             <div class="header">
-                <img id="mainImage" src="https://github.com/iptvwebos-stack/repo/blob/main/Lumii_20250107_140735042.jpg?raw=true3" alt="IPTV Premium - Accédez à des milliers de chaînes">
+                <img src="https://images.unsplash.com/photo-1603383928962-8e4c308a81e3?auto=format&fit=crop&w=600&h=300" alt="IPTV Premium - Accédez à des milliers de chaînes">
             </div>
             
             <div class="content">
@@ -542,22 +550,22 @@
                 
                 <div class="platforms">
                     <div class="platform" data-target="page3">
-                        <img id="samsungTvImage" src="https://github.com/iptvwebos-stack/repo/blob/main/samsung.png?raw=true" alt="Samsung TV">
+                        <img src="https://cdn-icons-png.flaticon.com/512/731/731559.png" alt="Samsung TV">
                         <h3>Samsung TV</h3>
                     </div>
                     
                     <div class="platform" data-target="page4">
-                        <img id="lgTvImage" src="https://github.com/iptvwebos-stack/repo/blob/main/lg.png?raw=true" alt="LG TV">
+                        <img src="https://cdn-icons-png.flaticon.com/512/882/882745.png" alt="LG TV">
                         <h3>LG TV</h3>
                     </div>
                     
                     <div class="platform" data-target="page5">
-                        <img id="androidTvImage" src="https://github.com/iptvwebos-stack/repo/blob/main/android(1).png?raw=true" alt="Android TV">
+                        <img src="https://cdn-icons-png.flaticon.com/512/226/226772.png" alt="Android TV">
                         <h3>Android TV/BOXTV</h3>
                     </div>
                     
                     <div class="platform" data-target="page6">
-                        <img id="receiverImage" src="https://github.com/iptvwebos-stack/repo/blob/main/satellite.png?raw=true" alt="Récepteur Satellite">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1430/1430763.png" alt="Récepteur Satellite">
                         <h3>Récepteur Satellite</h3>
                     </div>
                 </div>
@@ -587,11 +595,11 @@
                     <p>Vous devez installer l'application BOBPLAYER du Store des applications Samsung et nous envoyer l'adresse MAC et Device Key sur WhatsApp.</p>
                 </div>
                 
-                <div class="video-container" id="samsungVideo">
-                    <div class="lite-youtube" id="samsungYoutubePlayer">
-                        <div style="display:flex;align-items:center;justify-content:center;height:100%;background:#222;color:#fff;">
-                            <i class="fas fa-play-circle" style="font-size:48px;margin-right:15px;"></i>
-                            <p>Vidéo de démonstration Samsung TV</p>
+                <div class="video-container">
+                    <div class="youtube-thumbnail" data-video-id="jNQXAC9IVRw">
+                        <img src="https://img.youtube.com/vi/jNQXAC9IVRw/maxresdefault.jpg" alt="Vidéo de démonstration Samsung TV">
+                        <div class="play-button">
+                            <i class="fas fa-play-circle"></i>
                         </div>
                     </div>
                 </div>
@@ -632,11 +640,11 @@
                     <p>Vous devez installer l'application BOBPLAYER du Store des applications LG et nous envoyer l'adresse MAC et Device Key sur WhatsApp.</p>
                 </div>
                 
-                <div class="video-container" id="lgVideo">
-                    <div class="lite-youtube" id="lgYoutubePlayer">
-                        <div style="display:flex;align-items:center;justify-content:center;height:100%;background:#222;color:#fff;">
-                            <i class="fas fa-play-circle" style="font-size:48px;margin-right:15px;"></i>
-                            <p>Vidéo de démonstration LG TV</p>
+                <div class="video-container">
+                    <div class="youtube-thumbnail" data-video-id="jNQXAC9IVRw">
+                        <img src="https://img.youtube.com/vi/jNQXAC9IVRw/maxresdefault.jpg" alt="Vidéo de démonstration LG TV">
+                        <div class="play-button">
+                            <i class="fas fa-play-circle"></i>
                         </div>
                     </div>
                 </div>
@@ -681,11 +689,11 @@
                     <i class="fas fa-download"></i> Télécharger KNG PLAYER
                 </a>
                 
-                <div class="video-container" id="androidVideo">
-                    <div class="lite-youtube" id="androidYoutubePlayer">
-                        <div style="display:flex;align-items:center;justify-content:center;height:100%;background:#222;color:#fff;">
-                            <i class="fas fa-play-circle" style="font-size:48px;margin-right:15px;"></i>
-                            <p>Vidéo de démonstration Android TV</p>
+                <div class="video-container">
+                    <div class="youtube-thumbnail" data-video-id="jNQXAC9IVRw">
+                        <img src="https://img.youtube.com/vi/jNQXAC9IVRw/maxresdefault.jpg" alt="Vidéo de démonstration Android TV">
+                        <div class="play-button">
+                            <i class="fas fa-play-circle"></i>
                         </div>
                     </div>
                 </div>
@@ -763,194 +771,22 @@
                 <div class="step active"></div>
             </div>
         </div>
-        
-        <!-- Page 7 (Connexion Admin) -->
-        <div id="page7" class="page">
-            <div class="content">
-                <h1>Connexion Administrateur</h1>
-                
-                <div class="login-form">
-                    <div class="form-group">
-                        <label for="adminUsername">Nom d'utilisateur:</label>
-                        <input type="text" id="adminUsername" placeholder="Entrez votre nom d'utilisateur">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="adminPassword">Mot de passe:</label>
-                        <input type="password" id="adminPassword" placeholder="Entrez votre mot de passe">
-                    </div>
-                    
-                    <button id="loginBtn" class="btn">Se connecter</button>
-                    
-                    <div class="back-btn" onclick="showPage('page1')">
-                        <i class="fas fa-arrow-left"></i> Retour à l'accueil
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Page 8 (Tableau de bord Admin) -->
-        <div id="page8" class="page">
-            <div class="content">
-                <h1>Tableau de Bord Administrateur</h1>
-                
-                <div class="admin-form">
-                    <h3>Image Principale</h3>
-                    <div class="form-group">
-                        <label for="mainImageUrl">URL de l'image d'en-tête:</label>
-                        <input type="text" id="mainImageUrl" placeholder="https://example.com/image.jpg">
-                    </div>
-                    <div class="upload-container">
-                        <label>Ou uploader une image:</label>
-                        <input type="file" id="mainImageUpload" accept="image/*" class="upload-btn">
-                        <img id="mainImagePreview" class="upload-preview" style="display:none;">
-                    </div>
-                    <button class="save-btn" onclick="updateImage('mainImage', 'mainImageUrl', 'mainImageUpload')">Enregistrer</button>
-                </div>
-                
-                <div class="admin-form">
-                    <h3>Images des Plateformes</h3>
-                    
-                    <div class="form-group">
-                        <label for="samsungTvImageUrl">URL image Samsung TV:</label>
-                        <input type="text" id="samsungTvImageUrl" placeholder="https://example.com/samsung.png">
-                    </div>
-                    <div class="upload-container">
-                        <label>Ou uploader une image:</label>
-                        <input type="file" id="samsungTvImageUpload" accept="image/*" class="upload-btn">
-                        <img id="samsungTvImagePreview" class="upload-preview" style="display:none;">
-                    </div>
-                    <button class="save-btn" onclick="updateImage('samsungTvImage', 'samsungTvImageUrl', 'samsungTvImageUpload')">Enregistrer</button>
-                    
-                    <div class="form-group">
-                        <label for="lgTvImageUrl">URL image LG TV:</label>
-                        <input type="text" id="lgTvImageUrl" placeholder="https://example.com/lg.png">
-                    </div>
-                    <div class="upload-container">
-                        <label>Ou uploader une image:</label>
-                        <input type="file" id="lgTvImageUpload" accept="image/*" class="upload-btn">
-                        <img id="lgTvImagePreview" class="upload-preview" style="display:none;">
-                    </div>
-                    <button class="save-btn" onclick="updateImage('lgTvImage', 'lgTvImageUrl', 'lgTvImageUpload')">Enregistrer</button>
-                    
-                    <div class="form-group">
-                        <label for="androidTvImageUrl">URL image Android TV:</label>
-                        <input type="text" id="androidTvImageUrl" placeholder="https://example.com/android.png">
-                    </div>
-                    <div class="upload-container">
-                        <label>Ou uploader une image:</label>
-                        <input type="file" id="androidTvImageUpload" accept="image/*" class="upload-btn">
-                        <img id="androidTvImagePreview" class="upload-preview" style="display:none;">
-                    </div>
-                    <button class="save-btn" onclick="updateImage('androidTvImage', 'androidTvImageUrl', 'androidTvImageUpload')">Enregistrer</button>
-                    
-                    <div class="form-group">
-                        <label for="receiverImageUrl">URL image Récepteur Satellite:</label>
-                        <input type="text" id="receiverImageUrl" placeholder="https://example.com/receiver.png">
-                    </div>
-                    <div class="upload-container">
-                        <label>Ou uploader une image:</label>
-                        <input type="file" id="receiverImageUpload" accept="image/*" class="upload-btn">
-                        <img id="receiverImagePreview" class="upload-preview" style="display:none;">
-                    </div>
-                    <button class="save-btn" onclick="updateImage('receiverImage', 'receiverImageUrl', 'receiverImageUpload')">Enregistrer</button>
-                </div>
-                
-                <div class="admin-form">
-                    <h3>Vidéos de Démonstration</h3>
-                    <div class="form-group">
-                        <label for="samsungVideoUrl">URL vidéo YouTube Samsung TV:</label>
-                        <input type="text" id="samsungVideoUrl" placeholder="ID de la vidéo YouTube (ex: dQw4w9WgXcQ)">
-                    </div>
-                    <button class="save-btn" onclick="updateYoutubeVideo('samsungYoutubePlayer', 'samsungVideoUrl')">Enregistrer</button>
-                    
-                    <div class="form-group">
-                        <label for="lgVideoUrl">URL vidéo YouTube LG TV:</label>
-                        <input type="text" id="lgVideoUrl" placeholder="ID de la vidéo YouTube (ex: dQw4w9WgXcQ)">
-                    </div>
-                    <button class="save-btn" onclick="updateYoutubeVideo('lgYoutubePlayer', 'lgVideoUrl')">Enregistrer</button>
-                    
-                    <div class="form-group">
-                        <label for="androidVideoUrl">URL vidéo YouTube Android TV:</label>
-                        <input type="text" id="androidVideoUrl" placeholder="ID de la vidéo YouTube (ex: dQw4w9WgXcQ)">
-                    </div>
-                    <button class="save-btn" onclick="updateYoutubeVideo('androidYoutubePlayer', 'androidVideoUrl')">Enregistrer</button>
-                </div>
-                
-                <div class="admin-form">
-                    <h3>Paramètres de Connexion Admin</h3>
-                    <div class="form-group">
-                        <label for="newUsername">Nouveau nom d'utilisateur:</label>
-                        <input type="text" id="newUsername" placeholder="Nouveau nom d'utilisateur">
-                    </div>
-                    <div class="form-group">
-                        <label for="newPassword">Nouveau mot de passe:</label>
-                        <input type="password" id="newPassword" placeholder="Nouveau mot de passe">
-                    </div>
-                    <button class="save-btn" onclick="updateAdminCredentials()">Mettre à jour</button>
-                </div>
-                
-                <button class="logout-btn" onclick="logout()">Déconnexion</button>
-                <div class="back-btn" onclick="showPage('page1')">
-                    <i class="fas fa-arrow-left"></i> Retour à l'accueil
-                </div>
+    </div>
+
+    <!-- Modal pour afficher les vidéos YouTube -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="video-container">
+                <iframe id="youtubeVideo" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
     <script>
-        // Configuration administrateur (à modifier selon vos besoins)
-        let adminConfig = {
-            username: "admin",
-            password: "password123",
-            images: {
-                mainImage: "https://images.unsplash.com/photo-1603383928962-8e4c308a81e3?auto=format&fit=crop&w=600&h=300",
-                samsungTvImage: "https://cdn-icons-png.flaticon.com/512/731/731559.png",
-                lgTvImage: "https://cdn-icons-png.flaticon.com/512/882/882745.png",
-                androidTvImage: "https://cdn-icons-png.flaticon.com/512/226/226772.png",
-                receiverImage: "https://cdn-icons-png.flaticon.com/512/1430/1430763.png"
-            },
-            videos: {
-                samsungVideo: "",
-                lgVideo: "",
-                androidVideo: ""
-            }
-        };
-        
-        // Charger la configuration depuis le localStorage si disponible
-        function loadConfig() {
-            const savedConfig = localStorage.getItem('adminConfig');
-            if (savedConfig) {
-                adminConfig = JSON.parse(savedConfig);
-                
-                // Mettre à jour les éléments avec les valeurs sauvegardées
-                document.getElementById('mainImage').src = adminConfig.images.mainImage;
-                document.getElementById('samsungTvImage').src = adminConfig.images.samsungTvImage;
-                document.getElementById('lgTvImage').src = adminConfig.images.lgTvImage;
-                document.getElementById('androidTvImage').src = adminConfig.images.androidTvImage;
-                document.getElementById('receiverImage').src = adminConfig.images.receiverImage;
-                
-                // Mettre à jour les vidéos YouTube si elles existent
-                if (adminConfig.videos.samsungVideo) {
-                    initYoutubePlayer('samsungYoutubePlayer', adminConfig.videos.samsungVideo);
-                }
-                if (adminConfig.videos.lgVideo) {
-                    initYoutubePlayer('lgYoutubePlayer', adminConfig.videos.lgVideo);
-                }
-                if (adminConfig.videos.androidVideo) {
-                    initYoutubePlayer('androidYoutubePlayer', adminConfig.videos.androidVideo);
-                }
-            }
-        }
-        
-        // Sauvegarder la configuration dans le localStorage
-        function saveConfig() {
-            localStorage.setItem('adminConfig', JSON.stringify(adminConfig));
-        }
-        
         // Fonction pour naviguer entre les pages
         function showPage(pageId) {
-            // Masquer toutes les pages
+            // Cacher toutes les pages
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
@@ -958,204 +794,117 @@
             // Afficher la page demandée
             document.getElementById(pageId).classList.add('active');
             
-            // Mettre à jour l'indicateur d'étape (uniquement pour les pages principales)
-            const pages = ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'];
-            const currentIndex = pages.indexOf(pageId);
+            // Mettre à jour les indicateurs d'étape
+            updateStepIndicator(pageId);
             
-            if (currentIndex !== -1) {
-                document.querySelectorAll('.step').forEach((step, index) => {
-                    if (index === currentIndex) {
-                        step.classList.add('active');
-                    } else {
-                        step.classList.remove('active');
-                    }
-                });
-            }
-            
-            // Remonter en haut de la page
+            // Scroll vers le haut pour une meilleure expérience mobile
             window.scrollTo(0, 0);
         }
         
-        // Mettre à jour une image (avec support upload)
-        function updateImage(imageElementId, inputElementId, uploadElementId) {
-            const urlInput = document.getElementById(inputElementId);
-            const uploadInput = document.getElementById(uploadElementId);
-            let newUrl = urlInput.value;
+        // Fonction pour mettre à jour les indicateurs d'étape
+        function updateStepIndicator(pageId) {
+            const pageNumber = parseInt(pageId.replace('page', ''));
+            const steps = document.querySelectorAll('.step');
             
-            // Si un fichier a été uploadé, utiliser sa version base64
-            if (uploadInput.files && uploadInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    newUrl = e.target.result;
-                    document.getElementById(imageElementId).src = newUrl;
-                    
-                    // Sauvegarder dans la configuration
-                    adminConfig.images[imageElementId] = newUrl;
-                    saveConfig();
-                    alert('Image mise à jour avec succès!');
-                };
-                reader.readAsDataURL(uploadInput.files[0]);
-            } 
-            // Sinon, utiliser l'URL fournie
-            else if (newUrl) {
-                document.getElementById(imageElementId).src = newUrl;
-                
-                // Sauvegarder dans la configuration
-                adminConfig.images[imageElementId] = newUrl;
-                saveConfig();
-                alert('Image mise à jour avec succès!');
-            } else {
-                alert('Veuillez entrer une URL ou uploader une image');
-            }
-        }
-        
-        // Mettre à jour une vidéo YouTube
-        function updateYoutubeVideo(playerElementId, inputElementId) {
-            const videoId = document.getElementById(inputElementId).value;
-            if (videoId) {
-                initYoutubePlayer(playerElementId, videoId);
-                
-                // Sauvegarder dans la configuration
-                adminConfig.videos[playerElementId.replace('YoutubePlayer', 'Video')] = videoId;
-                
-                saveConfig();
-                alert('Vidéo YouTube mise à jour avec succès!');
-            }
-        }
-        
-        // Initialiser un lecteur YouTube
-        function initYoutubePlayer(playerElementId, videoId) {
-            const playerElement = document.getElementById(playerElementId);
-            
-            // Vider le contenu existant
-            playerElement.innerHTML = '';
-            
-            // Créer l'iframe YouTube
-            const iframe = document.createElement('iframe');
-            iframe.width = '100%';
-            iframe.height = '100%';
-            iframe.src = `https://www.youtube.com/embed/${videoId}`;
-            iframe.frameBorder = '0';
-            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-            iframe.allowFullscreen = true;
-            
-            // Ajouter l'iframe au conteneur
-            playerElement.appendChild(iframe);
-        }
-        
-        // Mettre à jour les identifiants admin
-        function updateAdminCredentials() {
-            const newUsername = document.getElementById('newUsername').value;
-            const newPassword = document.getElementById('newPassword').value;
-            
-            if (newUsername) {
-                adminConfig.username = newUsername;
-            }
-            
-            if (newPassword) {
-                adminConfig.password = newPassword;
-            }
-            
-            saveConfig();
-            alert('Identifiants administrateur mis à jour!');
-        }
-        
-        // Déconnexion
-        function logout() {
-            showPage('page1');
-        }
-        
-        // Aperçu des images uploadées
-        function setupImagePreview(uploadElementId, previewElementId) {
-            const uploadElement = document.getElementById(uploadElementId);
-            const previewElement = document.getElementById(previewElementId);
-            
-            uploadElement.addEventListener('change', function() {
-                if (this.files && this.files[0]) {
-                    const reader = new FileReader();
-                    
-                    reader.onload = function(e) {
-                        previewElement.src = e.target.result;
-                        previewElement.style.display = 'block';
-                    }
-                    
-                    reader.readAsDataURL(this.files[0]);
+            steps.forEach((step, index) => {
+                if (index < pageNumber) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
                 }
             });
         }
         
-        // Initialisation après le chargement de la page
+        // Attendre que le DOM soit chargé
         document.addEventListener('DOMContentLoaded', function() {
-            // Charger la configuration
-            loadConfig();
-            
-            // Bouton d'abonnement
-            document.getElementById('subscribeBtn').addEventListener('click', () => {
+            // Gestionnaire pour le bouton "Abonnez-vous Maintenant"
+            document.getElementById('subscribeBtn').addEventListener('click', function() {
                 showPage('page2');
             });
             
-            // Bouton admin flottant
-            document.getElementById('adminButton').addEventListener('click', () => {
-                showPage('page7');
-            });
-            
-            // Navigation des plateformes
-            document.querySelectorAll('.platform').forEach(platform => {
-                platform.addEventListener('click', () => {
-                    const targetPage = platform.getAttribute('data-target');
-                    showPage(targetPage);
-                });
-            });
-            
-            // Boutons de retour
-            document.getElementById('backToPage1').addEventListener('click', () => {
+            // Gestionnaires pour les boutons de retour
+            document.getElementById('backToPage1').addEventListener('click', function() {
                 showPage('page1');
             });
             
-            document.getElementById('backToPage2From3').addEventListener('click', () => {
+            document.getElementById('backToPage2From3').addEventListener('click', function() {
                 showPage('page2');
             });
             
-            document.getElementById('backToPage2From4').addEventListener('click', () => {
+            document.getElementById('backToPage2From4').addEventListener('click', function() {
                 showPage('page2');
             });
             
-            document.getElementById('backToPage2From5').addEventListener('click', () => {
+            document.getElementById('backToPage2From5').addEventListener('click', function() {
                 showPage('page2');
             });
             
-            document.getElementById('backToPage2From6').addEventListener('click', () => {
+            document.getElementById('backToPage2From6').addEventListener('click', function() {
                 showPage('page2');
             });
             
-            // Connexion admin
-            document.getElementById('loginBtn').addEventListener('click', () => {
-                const username = document.getElementById('adminUsername').value;
-                const password = document.getElementById('adminPassword').value;
+            // Gestionnaires pour les plateformes
+            document.querySelectorAll('.platform').forEach(platform => {
+                platform.addEventListener('click', function() {
+                    const targetPage = this.getAttribute('data-target');
+                    showPage(targetPage);
+                });
                 
-                if (username === adminConfig.username && password === adminConfig.password) {
-                    showPage('page8');
-                    
-                    // Pré-remplir les champs du tableau de bord
-                    document.getElementById('mainImageUrl').value = adminConfig.images.mainImage;
-                    document.getElementById('samsungTvImageUrl').value = adminConfig.images.samsungTvImage;
-                    document.getElementById('lgTvImageUrl').value = adminConfig.images.lgTvImage;
-                    document.getElementById('androidTvImageUrl').value = adminConfig.images.androidTvImage;
-                    document.getElementById('receiverImageUrl').value = adminConfig.images.receiverImage;
-                    document.getElementById('samsungVideoUrl').value = adminConfig.videos.samsungVideo || '';
-                    document.getElementById('lgVideoUrl').value = adminConfig.videos.lgVideo || '';
-                    document.getElementById('androidVideoUrl').value = adminConfig.videos.androidVideo || '';
-                } else {
-                    alert('Nom d\'utilisateur ou mot de passe incorrect!');
+                // Ajouter un écouteur pour les événements tactiles
+                platform.addEventListener('touchstart', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.background = 'rgba(255, 255, 255, 0.15)';
+                    this.style.borderColor = '#4fc3f7';
+                }, {passive: true});
+                
+                platform.addEventListener('touchend', function() {
+                    this.style.transform = '';
+                    this.style.background = '';
+                    this.style.borderColor = '';
+                }, {passive: true});
+            });
+            
+            // Gestionnaires pour les miniatures YouTube
+            const modal = document.getElementById('videoModal');
+            const youtubeIframe = document.getElementById('youtubeVideo');
+            const closeModal = document.querySelector('.close-modal');
+            
+            document.querySelectorAll('.youtube-thumbnail').forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    const videoId = this.getAttribute('data-video-id');
+                    // Utilisation de l'URL d'intégration YouTube correcte
+                    youtubeIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0&autohide=1`;
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Fermer la modal
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+                youtubeIframe.src = '';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Fermer la modal en cliquant à l'extérieur
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    youtubeIframe.src = '';
+                    document.body.style.overflow = 'auto';
                 }
             });
             
-            // Configurer les aperçus d'images
-            setupImagePreview('mainImageUpload', 'mainImagePreview');
-            setupImagePreview('samsungTvImageUpload', 'samsungTvImagePreview');
-            setupImagePreview('lgTvImageUpload', 'lgTvImagePreview');
-            setupImagePreview('androidTvImageUpload', 'androidTvImagePreview');
-            setupImagePreview('receiverImageUpload', 'receiverImagePreview');
+            // Support des événements tactiles pour iOS
+            document.querySelectorAll('.btn, .back-btn').forEach(button => {
+                button.addEventListener('touchstart', function() {
+                    this.style.transform = this.classList.contains('btn') ? 'translateY(-3px)' : '';
+                }, {passive: true});
+                
+                button.addEventListener('touchend', function() {
+                    this.style.transform = '';
+                }, {passive: true});
+            });
         });
     </script>
 </body>
