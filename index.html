@@ -20,6 +20,7 @@
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
+            padding-bottom: 70px; /* Espace pour le bouton flottant */
         }
         
         .container {
@@ -268,6 +269,33 @@
             background: rgba(255, 255, 255, 0.2);
         }
         
+        /* Bouton flottant global */
+        .floating-back-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: clamp(14px, 2.5vw, 16px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .floating-back-btn:hover, .floating-back-btn:active {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-3px);
+        }
+        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -479,6 +507,13 @@
             .channels-list {
                 grid-template-columns: 1fr;
             }
+            
+            .floating-back-btn {
+                bottom: 15px;
+                left: 15px;
+                padding: 10px 16px;
+                font-size: 14px;
+            }
         }
         
         /* Téléphones (portrait) */
@@ -596,6 +631,16 @@
                 transform: translateY(-3px);
                 background: rgba(255, 255, 255, 0.15);
             }
+            
+            .floating-back-btn:hover {
+                transform: none;
+                background: rgba(0, 0, 0, 0.7);
+            }
+            
+            .floating-back-btn:active {
+                transform: translateY(-3px);
+                background: rgba(0, 0, 0, 0.9);
+            }
         }
     </style>
 </head>
@@ -686,10 +731,6 @@
                         <h3>Récepteur Satellite</h3>
                     </div>
                 </div>
-                
-                <div class="back-btn" id="backToPage1">
-                    <i class="fas fa-arrow-left"></i> Retour
-                </div>
             </div>
             
             <div class="step-indicator">
@@ -732,10 +773,6 @@
                 <a href="https://wa.me/212698649074" target="_blank" class="btn btn-whatsapp">
                     <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
                 </a>
-                
-                <div class="back-btn" id="backToPage2From3">
-                    <i class="fas fa-arrow-left"></i> Retour
-                </div>
             </div>
             
             <div class="step-indicator">
@@ -778,10 +815,6 @@
                 <a href="https://wa.me/212698649074" target="_blank" class="btn btn-whatsapp">
                     <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
                 </a>
-                
-                <div class="back-btn" id="backToPage2From4">
-                    <i class="fas fa-arrow-left"></i> Retour
-                </div>
             </div>
             
             <div class="step-indicator">
@@ -828,10 +861,6 @@
                 <a href="https://wa.me/212698649074" target="_blank" class="btn btn-whatsapp">
                     <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
                 </a>
-                
-                <div class="back-btn" id="backToPage2From5">
-                    <i class="fas fa-arrow-left"></i> Retour
-                </div>
             </div>
             
             <div class="step-indicator">
@@ -877,10 +906,6 @@
                 <a href="https://wa.me/212698649074" target="_blank" class="btn btn-whatsapp">
                     <i class="fab fa-whatsapp"></i> Contacter sur WhatsApp
                 </a>
-                
-                <div class="back-btn" id="backToPage2From6">
-                    <i class="fas fa-arrow-left"></i> Retour
-                </div>
             </div>
             
             <div class="step-indicator">
@@ -908,10 +933,6 @@
                         <i class="fas fa-spinner fa-spin"></i> Chargement des chaînes...
                     </div>
                 </div>
-                
-                <div class="back-btn" id="backToPage1From7">
-                    <i class="fas fa-arrow-left"></i> Retour à l'accueil
-                </div>
             </div>
             
             <div class="step-indicator">
@@ -924,6 +945,11 @@
                 <div class="step active"></div>
             </div>
         </div>
+    </div>
+
+    <!-- Bouton de retour flottant -->
+    <div id="floatingBackBtn" class="floating-back-btn" style="display: none;">
+        <i class="fas fa-arrow-left"></i> Retour
     </div>
 
     <!-- Modal pour afficher les vidéos YouTube -->
@@ -950,6 +976,9 @@
             // Mettre à jour les indicateurs d'étape
             updateStepIndicator(pageId);
             
+            // Gérer l'affichage du bouton flottant
+            updateFloatingBackButton(pageId);
+            
             // Scroll vers le haut pour une meilleure expérience mobile
             window.scrollTo(0, 0);
             
@@ -971,6 +1000,35 @@
                     step.classList.remove('active');
                 }
             });
+        }
+        
+        // Fonction pour gérer l'affichage et le comportement du bouton flottant
+        function updateFloatingBackButton(pageId) {
+            const floatingBackBtn = document.getElementById('floatingBackBtn');
+            
+            // Déterminer la cible de retour en fonction de la page actuelle
+            let targetPage = '';
+            switch(pageId) {
+                case 'page1':
+                    floatingBackBtn.style.display = 'none';
+                    return;
+                case 'page2':
+                case 'page7':
+                    targetPage = 'page1';
+                    break;
+                case 'page3':
+                case 'page4':
+                case 'page5':
+                case 'page6':
+                    targetPage = 'page2';
+                    break;
+            }
+            
+            // Afficher le bouton et définir son action
+            floatingBackBtn.style.display = 'flex';
+            floatingBackBtn.onclick = function() {
+                showPage(targetPage);
+            };
         }
         
         // Fonction pour charger et afficher les données des chaînes
@@ -1073,31 +1131,6 @@
                 showPage('page7');
             });
             
-            // Gestionnaires pour les boutons de retour
-            document.getElementById('backToPage1').addEventListener('click', function() {
-                showPage('page1');
-            });
-            
-            document.getElementById('backToPage1From7').addEventListener('click', function() {
-                showPage('page1');
-            });
-            
-            document.getElementById('backToPage2From3').addEventListener('click', function() {
-                showPage('page2');
-            });
-            
-            document.getElementById('backToPage2From4').addEventListener('click', function() {
-                showPage('page2');
-            });
-            
-            document.getElementById('backToPage2From5').addEventListener('click', function() {
-                showPage('page2');
-            });
-            
-            document.getElementById('backToPage2From6').addEventListener('click', function() {
-                showPage('page2');
-            });
-            
             // Gestionnaires pour les plateformes
             document.querySelectorAll('.platform').forEach(platform => {
                 platform.addEventListener('click', function() {
@@ -1151,15 +1184,18 @@
             });
             
             // Support des événements tactiles pour iOS
-            document.querySelectorAll('.btn, .back-btn').forEach(button => {
+            document.querySelectorAll('.btn, .floating-back-btn').forEach(button => {
                 button.addEventListener('touchstart', function() {
-                    this.style.transform = this.classList.contains('btn') ? 'translateY(-3px)' : '';
+                    this.style.transform = this.classList.contains('btn') ? 'translateY(-3px)' : 'translateY(-3px)';
                 }, {passive: true});
                 
                 button.addEventListener('touchend', function() {
                     this.style.transform = '';
                 }, {passive: true});
             });
+            
+            // Initialiser l'affichage du bouton flottant pour la page active
+            updateFloatingBackButton('page1');
         });
     </script>
 </body>
