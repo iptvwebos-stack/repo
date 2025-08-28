@@ -121,6 +121,14 @@
             gap: 10px;
         }
         
+        .btn-channels {
+            background: linear-gradient(to right, #9C27B0, #673AB7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
         .platforms {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -357,6 +365,80 @@
             justify-content: center;
         }
         
+        /* Styles pour la page de liste des chaînes */
+        .search-container {
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: none;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .country-section {
+            margin: 25px 0;
+        }
+        
+        .country-header {
+            background: linear-gradient(to right, #4fc3f7, #0288d1);
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        
+        .country-header h3 {
+            margin: 0;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .channels-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 12px;
+        }
+        
+        .channel-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .channel-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 30px;
+            font-size: 18px;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            font-size: 18px;
+            color: #ffcc00;
+        }
+        
         /* Media Queries pour différents appareils */
         
         /* Téléphones petits (portrait) */
@@ -393,6 +475,10 @@
             .app-item {
                 width: 100%;
             }
+            
+            .channels-list {
+                grid-template-columns: 1fr;
+            }
         }
         
         /* Téléphones (portrait) */
@@ -409,6 +495,10 @@
                 width: 8px;
                 height: 8px;
             }
+            
+            .channels-list {
+                grid-template-columns: 1fr;
+            }
         }
         
         /* Téléphones (paysage) et petites tablettes */
@@ -418,6 +508,10 @@
             }
             
             .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .channels-list {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -435,6 +529,10 @@
             .features {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .channels-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         /* Grands écrans */
@@ -449,6 +547,10 @@
             
             .features {
                 grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .channels-list {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
         
@@ -484,6 +586,16 @@
             .btn:active {
                 transform: translateY(-3px);
             }
+            
+            .channel-item:hover {
+                transform: none;
+                background: rgba(255, 255, 255, 0.1);
+            }
+            
+            .channel-item:active {
+                transform: translateY(-3px);
+                background: rgba(255, 255, 255, 0.15);
+            }
         }
     </style>
 </head>
@@ -501,6 +613,10 @@
                 <div class="price-tag">
                     Seulement 200 Dhs / An
                 </div>
+                
+                <button id="channelsBtn" class="btn btn-channels">
+                    <i class="fas fa-list"></i> Liste des chaines & VOD & Séries
+                </button>
                 
                 <p>Profitez d'une expérience de divertissement exceptionnelle avec notre abonnement IPTV premium. Accédez à des milliers de chaînes et contenus du monde entier.</p>
                 
@@ -534,6 +650,7 @@
             
             <div class="step-indicator">
                 <div class="step active"></div>
+                <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
@@ -578,6 +695,7 @@
             <div class="step-indicator">
                 <div class="step"></div>
                 <div class="step active"></div>
+                <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
@@ -627,6 +745,7 @@
                 <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
+                <div class="step"></div>
             </div>
         </div>
         
@@ -670,6 +789,7 @@
                 <div class="step"></div>
                 <div class="step"></div>
                 <div class="step active"></div>
+                <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
             </div>
@@ -721,6 +841,7 @@
                 <div class="step"></div>
                 <div class="step active"></div>
                 <div class="step"></div>
+                <div class="step"></div>
             </div>
         </div>
         
@@ -748,7 +869,7 @@
                 
                 <p>Après avoir choisi votre application préférée, veuillez nous envoyer:</p>
                 <ul>
-                    <li>Le nom de l'application que vous souhaitez utiliser</li>
+                    <li>Le nombre de l'application que vous souhaitez utiliser</li>
                     <li>Le modèle de votre récepteur</li>
                     <li>Votre nom complet</li>
                 </ul>
@@ -763,6 +884,38 @@
             </div>
             
             <div class="step-indicator">
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step active"></div>
+                <div class="step"></div>
+            </div>
+        </div>
+        
+        <!-- Page 7 (Liste des chaînes) -->
+        <div id="page7" class="page">
+            <div class="content">
+                <h1>Liste des chaînes & VOD & Séries</h1>
+                
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Rechercher une chaîne...">
+                </div>
+                
+                <div id="channelsList">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i> Chargement des chaînes...
+                    </div>
+                </div>
+                
+                <div class="back-btn" id="backToPage1From7">
+                    <i class="fas fa-arrow-left"></i> Retour à l'accueil
+                </div>
+            </div>
+            
+            <div class="step-indicator">
+                <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
@@ -799,6 +952,11 @@
             
             // Scroll vers le haut pour une meilleure expérience mobile
             window.scrollTo(0, 0);
+            
+            // Si on affiche la page des chaînes, charger les données
+            if (pageId === 'page7') {
+                loadChannelsData();
+            }
         }
         
         // Fonction pour mettre à jour les indicateurs d'étape
@@ -815,6 +973,94 @@
             });
         }
         
+        // Fonction pour charger et afficher les données des chaînes
+        function loadChannelsData() {
+            const channelsList = document.getElementById('channelsList');
+            channelsList.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Chargement des chaînes...</div>';
+            
+            fetch('./data.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erreur de chargement des données');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    displayChannels(data);
+                    setupSearch(data);
+                })
+                .catch(error => {
+                    channelsList.innerHTML = `<div class="no-results">Erreur: ${error.message}</div>`;
+                });
+        }
+        
+        // Fonction pour afficher les chaînes groupées par pays
+        function displayChannels(channelsData, searchTerm = '') {
+            const channelsList = document.getElementById('channelsList');
+            
+            // Grouper les chaînes par pays
+            const channelsByCountry = {};
+            channelsData.forEach(channel => {
+                const country = channel['country ']?.trim() || 'Autre';
+                if (!channelsByCountry[country]) {
+                    channelsByCountry[country] = [];
+                }
+                
+                // Filtrer par terme de recherche si fourni
+                if (!searchTerm || channel['Channel Name']?.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    channelsByCountry[country].push(channel);
+                }
+            });
+            
+            // Trier les pays par ordre alphabétique
+            const sortedCountries = Object.keys(channelsByCountry).sort();
+            
+            // Générer le HTML
+            let html = '';
+            
+            sortedCountries.forEach(country => {
+                const countryChannels = channelsByCountry[country];
+                if (countryChannels.length > 0) {
+                    html += `
+                        <div class="country-section">
+                            <div class="country-header">
+                                <h3>${country} (${countryChannels.length} chaînes)</h3>
+                            </div>
+                            <div class="channels-list">
+                    `;
+                    
+                    countryChannels.forEach(channel => {
+                        html += `
+                            <div class="channel-item">
+                                ${channel['Channel Name']}
+                            </div>
+                        `;
+                    });
+                    
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            
+            if (html === '') {
+                html = '<div class="no-results">Aucune chaîne trouvée.</div>';
+            }
+            
+            channelsList.innerHTML = html;
+        }
+        
+        // Configurer la fonctionnalité de recherche
+        function setupSearch(channelsData) {
+            const searchInput = document.getElementById('searchInput');
+            
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.trim();
+                displayChannels(channelsData, searchTerm);
+            });
+        }
+        
         // Attendre que le DOM soit chargé
         document.addEventListener('DOMContentLoaded', function() {
             // Gestionnaire pour le bouton "Abonnez-vous Maintenant"
@@ -822,8 +1068,17 @@
                 showPage('page2');
             });
             
+            // Gestionnaire pour le bouton "Liste des chaînes"
+            document.getElementById('channelsBtn').addEventListener('click', function() {
+                showPage('page7');
+            });
+            
             // Gestionnaires pour les boutons de retour
             document.getElementById('backToPage1').addEventListener('click', function() {
+                showPage('page1');
+            });
+            
+            document.getElementById('backToPage1From7').addEventListener('click', function() {
                 showPage('page1');
             });
             
