@@ -1059,7 +1059,7 @@
             // Grouper les chaînes par pays
             const channelsByCountry = {};
             channelsData.forEach(channel => {
-                const country = channel['country ']?.trim() || 'Autre';
+                const country = channel['country']?.trim() || 'Autre';
                 if (!channelsByCountry[country]) {
                     channelsByCountry[country] = [];
                 }
