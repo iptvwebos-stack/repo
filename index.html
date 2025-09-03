@@ -898,7 +898,7 @@
                 
                 <p>Après avoir choisi votre application préférée, veuillez nous envoyer:</p>
                 <ul>
-                    <li>Le nombre de l'application que vous souhaitez utiliser</li>
+                    <li>Le nom de l'application que vous souhaitez utiliser</li>
                     <li>Le modèle de votre récepteur</li>
                     <li>Votre nom complet</li>
                 </ul>
@@ -1036,20 +1036,33 @@
             const channelsList = document.getElementById('channelsList');
             channelsList.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Chargement des chaînes...</div>';
             
-            fetch('./data.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erreur de chargement des données');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    displayChannels(data);
-                    setupSearch(data);
-                })
-                .catch(error => {
-                    channelsList.innerHTML = `<div class="no-results">Erreur: ${error.message}</div>`;
-                });
+            // Simuler des données de chaînes (remplacez par votre propre structure de données)
+            const sampleData = [
+                {"Channel Name": "TF1", "country": "France"},
+                {"Channel Name": "France 2", "country": "France"},
+                {"Channel Name": "M6", "country": "France"},
+                {"Channel Name": "Canal+", "country": "France"},
+                {"Channel Name": "BBC One", "country": "Royaume-Uni"},
+                {"Channel Name": "ITV", "country": "Royaume-Uni"},
+                {"Channel Name": "RTL", "country": "Allemagne"},
+                {"Channel Name": "ARD", "country": "Allemagne"},
+                {"Channel Name": "RAI 1", "country": "Italie"},
+                {"Channel Name": "Antena 3", "country": "Espagne"},
+                {"Channel Name": "2M", "country": "Maroc"},
+                {"Channel Name": "Al Aoula", "country": "Maroc"},
+                {"Channel Name": "CNN", "country": "États-Unis"},
+                {"Channel Name": "Fox News", "country": "États-Unis"},
+                {"Channel Name": "ESPN", "country": "États-Unis"},
+                {"Channel Name": "beIN Sports", "country": "Qatar"},
+                {"Channel Name": "Rotana", "country": "Arabie Saoudite"},
+                {"Channel Name": "Dubai TV", "country": "Émirats Arabes Unis"},
+                {"Channel Name": "TV5 Monde", "country": "International"},
+                {"Channel Name": "Euronews", "country": "International"}
+            ];
+            
+            // Utiliser les données d'exemple
+            displayChannels(sampleData);
+            setupSearch(sampleData);
         }
         
         // Fonction pour afficher les chaînes groupées par pays
@@ -1137,19 +1150,6 @@
                     const targetPage = this.getAttribute('data-target');
                     showPage(targetPage);
                 });
-                
-                // Ajouter un écouteur pour les événements tactiles
-                platform.addEventListener('touchstart', function() {
-                    this.style.transform = 'translateY(-5px)';
-                    this.style.background = 'rgba(255, 255, 255, 0.15)';
-                    this.style.borderColor = '#4fc3f7';
-                }, {passive: true});
-                
-                platform.addEventListener('touchend', function() {
-                    this.style.transform = '';
-                    this.style.background = '';
-                    this.style.borderColor = '';
-                }, {passive: true});
             });
             
             // Gestionnaires pour les miniatures YouTube
@@ -1181,17 +1181,6 @@
                     youtubeIframe.src = '';
                     document.body.style.overflow = 'auto';
                 }
-            });
-            
-            // Support des événements tactiles pour iOS
-            document.querySelectorAll('.btn, .floating-back-btn').forEach(button => {
-                button.addEventListener('touchstart', function() {
-                    this.style.transform = this.classList.contains('btn') ? 'translateY(-3px)' : 'translateY(-3px)';
-                }, {passive: true});
-                
-                button.addEventListener('touchend', function() {
-                    this.style.transform = '';
-                }, {passive: true});
             });
             
             // Initialiser l'affichage du bouton flottant pour la page active
