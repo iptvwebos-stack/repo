@@ -19,9 +19,10 @@
             --button-gradient: linear-gradient(to right, #ff416c, #ff4b2b);
             --whatsapp-gradient: linear-gradient(to right, #25d366, #128c7e);
             --channels-gradient: linear-gradient(to right, #9C27B0, #673AB7);
-            --about-gradient: linear-gradient(to right, #4CAF50, #8BC34A);
+            --about-gradient: linear-gradient(to right, #3a7bd5, #00d2ff);
             --price-gradient: linear-gradient(135deg, #ffcc00, #ff9800);
             --header-gradient: linear-gradient(to right, #4fc3f7, #0288d1);
+            --footer-gradient: linear-gradient(to right, #2c3e50, #4ca1af);
             --text-light: #ffffff;
             --text-yellow: #ffcc00;
             --text-blue: #4fc3f7;
@@ -37,9 +38,8 @@
             color: var(--text-light);
             min-height: 100vh;
             overflow-x: hidden;
-            padding-bottom: 120px;
+            padding-bottom: 140px; /* Augmenté pour le footer */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            position: relative;
         }
         
         /* Structure de mise en page */
@@ -123,16 +123,16 @@
         .btn {
             display: block;
             width: 100%;
-            padding: 18px;
+            padding: 16px;
             background: var(--button-gradient);
             color: var(--text-light);
             text-align: center;
-            font-size: clamp(16px, 3vw, 18px);
+            font-size: clamp(16px, 3vw, 20px);
             font-weight: bold;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            margin: 15px 0;
+            margin: 25px 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             text-decoration: none;
@@ -167,12 +167,12 @@
             gap: 10px;
         }
         
-        /* Groupe de boutons côte à côte */
+        /* Conteneur pour les boutons côte à côte */
         .button-group {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
-            margin: 20px 0;
+            margin: 25px 0;
         }
         
         .button-group .btn {
@@ -315,7 +315,7 @@
         /* Bouton flottant */
         .floating-back-btn {
             position: fixed;
-            bottom: 20px;
+            bottom: 80px; /* Ajusté pour éviter le chevauchement avec le footer */
             left: 20px;
             z-index: 1000;
             display: inline-flex;
@@ -512,8 +512,8 @@
         .faq-item {
             margin-bottom: 20px;
             background: var(--bg-light);
-            padding: 15px;
             border-radius: 8px;
+            padding: 15px;
         }
         
         .faq-question {
@@ -525,19 +525,19 @@
         
         .faq-answer {
             padding-left: 15px;
-            border-left: 3px solid var(--text-blue);
+            font-size: clamp(15px, 2.5vw, 17px);
         }
         
-        /* Footer */
-        .footer {
+        /* Footer Menu */
+        .footer-menu {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: var(--footer-gradient);
             padding: 15px 0;
             z-index: 999;
-            backdrop-filter: blur(5px);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .footer-nav {
@@ -554,14 +554,15 @@
             color: var(--text-light);
             text-decoration: none;
             font-size: clamp(12px, 2.5vw, 14px);
-            padding: 5px 10px;
+            padding: 8px 12px;
             border-radius: 20px;
             transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .footer-link:hover, .footer-link:focus {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-yellow);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
         
         /* Formulaire de contact */
@@ -577,7 +578,7 @@
         }
         
         .form-label {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: bold;
         }
         
@@ -601,41 +602,61 @@
             resize: vertical;
         }
         
-        .form-submit {
-            background: var(--button-gradient);
-            color: white;
-            border: none;
+        /* Bannière Cookies */
+        .cookie-banner {
+            position: fixed;
+            bottom: 60px;
+            left: 0;
+            right: 0;
+            background: var(--bg-dark);
             padding: 15px;
-            border-radius: 50px;
-            font-weight: bold;
+            z-index: 1001;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+        
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        
+        .cookie-text {
+            flex: 1;
+            min-width: 250px;
+            font-size: clamp(14px, 2.5vw, 16px);
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .cookie-btn {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
             cursor: pointer;
+            font-weight: bold;
             transition: all 0.3s ease;
-            margin-top: 10px;
         }
         
-        .form-submit:hover, .form-submit:focus {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        .cookie-accept {
+            background: var(--whatsapp-gradient);
+            color: white;
         }
         
-        .contact-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+        .cookie-reject {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
         }
         
-        .contact-option {
-            background: var(--bg-light);
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .contact-option i {
-            font-size: 36px;
-            margin-bottom: 15px;
-            color: var(--text-blue);
+        .cookie-btn:hover {
+            transform: translateY(-2px);
         }
         
         /* Animations */
@@ -686,10 +707,14 @@
             }
             
             .floating-back-btn {
-                bottom: 15px;
+                bottom: 70px;
                 left: 15px;
                 padding: 10px 16px;
                 font-size: 14px;
+            }
+            
+            .button-group .btn {
+                flex: 1 1 100%;
             }
             
             .footer-nav {
@@ -697,12 +722,18 @@
             }
             
             .footer-link {
-                padding: 4px 8px;
+                padding: 6px 10px;
                 font-size: 11px;
             }
             
-            .button-group .btn {
-                flex: 1 1 100%;
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
             }
         }
         
@@ -725,16 +756,17 @@
                 grid-template-columns: 1fr;
             }
             
+            .button-group .btn {
+                flex: 1 1 100%;
+            }
+            
             .footer-nav {
                 gap: 10px;
             }
             
             .footer-link {
+                padding: 6px 10px;
                 font-size: 12px;
-            }
-            
-            .button-group .btn {
-                flex: 1 1 100%;
             }
         }
         
@@ -750,10 +782,6 @@
             
             .channels-list {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-nav {
-                gap: 12px;
             }
             
             .button-group .btn {
@@ -861,13 +889,13 @@
             }
             
             .footer-link:hover {
-                background: transparent;
-                color: var(--text-light);
+                transform: none;
+                background: rgba(255, 255, 255, 0.1);
             }
             
             .footer-link:active {
-                background: rgba(255, 255, 255, 0.1);
-                color: var(--text-yellow);
+                transform: translateY(-2px);
+                background: rgba(255, 255, 255, 0.2);
             }
         }
     </style>
@@ -877,7 +905,7 @@
         <!-- Page 1 -->
         <section id="page1" class="page active">
             <header class="header">
-                <img src="https://raw.githubusercontent.com/iptvwebos-stack/repo/refs/heads/main/headerimage.webp" alt="IPTV Premium - Accédez à des milliers de chaînes">
+                <img src="https://raw.githubusercontent.com/iptvwebos-stack/repo/refs/heads/main/headerimage.webp?auto=format&fit=crop&w=600&h=300" alt="IPTV Premium - Accédez à des milliers de chaînes">
             </header>
             
             <main class="content">
@@ -935,6 +963,12 @@
                 <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
             </div>
         </section>
         
@@ -970,6 +1004,12 @@
             <div class="step-indicator">
                 <div class="step"></div>
                 <div class="step active"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
@@ -1017,6 +1057,12 @@
                 <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
             </div>
         </section>
         
@@ -1056,6 +1102,12 @@
                 <div class="step"></div>
                 <div class="step"></div>
                 <div class="step active"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
                 <div class="step"></div>
@@ -1105,6 +1157,12 @@
                 <div class="step active"></div>
                 <div class="step"></div>
                 <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
             </div>
         </section>
         
@@ -1150,6 +1208,12 @@
                 <div class="step"></div>
                 <div class="step active"></div>
                 <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
             </div>
         </section>
         
@@ -1177,6 +1241,12 @@
                 <div class="step"></div>
                 <div class="step"></div>
                 <div class="step active"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
             </div>
         </section>
         
@@ -1185,17 +1255,53 @@
             <main class="content">
                 <h1>À propos de nous</h1>
                 
-                <p>Bienvenue sur IPTV Provider! Notre mission est de rendre la télévision accessible à tous, où que vous soyez.
-                Nous proposons un service IPTV qui vous permet de profiter de vos chaînes préférées, films, séries et événements sportifs en direct avec une qualité exceptionnelle.</p>
+                <p>Bienvenue sur IPTV Provider! Notre mission est de rendre la télévision accessible à tous, où que vous soyez.</p>
+                
+                <p>Nous proposons un service IPTV qui vous permet de profiter de vos chaînes préférées, films, séries et événements sportifs en direct avec une qualité exceptionnelle.</p>
                 
                 <p>Notre équipe est passionnée par la technologie et l'innovation : nous travaillons chaque jour pour vous offrir la meilleure expérience possible, avec une installation simple et un support réactif.</p>
                 
                 <p>Rejoignez dès aujourd'hui notre communauté d'abonnés et découvrez une nouvelle façon de regarder la télévision !</p>
                 
-                <button class="back-btn" onclick="showPage('page1')">
-                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour à l'accueil
-                </button>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-rocket" aria-hidden="true"></i>
+                        <h3>Innovation</h3>
+                        <p>Nous utilisons les dernières technologies</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-headset" aria-hidden="true"></i>
+                        <h3>Support</h3>
+                        <p>Équipe disponible pour vous aider</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        <h3>Sécurité</h3>
+                        <p>Service fiable et sécurisé</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-globe" aria-hidden="true"></i>
+                        <h3>Accessibilité</h3>
+                        <p>Disponible partout dans le monde</p>
+                    </div>
+                </div>
             </main>
+            
+            <div class="step-indicator">
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step active"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+            </div>
         </section>
         
         <!-- Page 9 (FAQ) -->
@@ -1204,37 +1310,61 @@
                 <h1>FAQ - Questions fréquentes</h1>
                 
                 <div class="faq-item">
-                    <div class="faq-question">1. Comment puis-je m'abonner ?</div>
+                    <div class="faq-question">
+                        1. Comment puis-je m'abonner ?
+                    </div>
                     <div class="faq-answer">
-                        <p>Choisissez votre formule, installez l'application sur votre appareil, puis envoyez-nous votre adresse MAC ou Device Key sur WhatsApp.</p>
+                        Choisissez votre formule, installez l'application sur votre appareil, puis envoyez-nous votre adresse MAC et Device Key sur WhatsApp.
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-question">2. Sur quels appareils fonctionne le service ?</div>
+                    <div class="faq-question">
+                        2. Sur quels appareils fonctionne le service ?
+                    </div>
                     <div class="faq-answer">
-                        <p>Notre service fonctionne sur Smart TV (Samsung, LG), Box Android, récepteurs compatibles, ordinateurs et smartphones.</p>
+                        Notre service fonctionne sur Smart TV (Samsung, LG, Sony, Hisense, Xiaomi, Tcl, Haier etc), Box Android, récepteurs compatibles, ordinateurs et smartphones.
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-question">3. Quelle est la qualité des chaînes ?</div>
+                    <div class="faq-question">
+                        3. Quelle est la qualité des chaînes ?
+                    </div>
                     <div class="faq-answer">
-                        <p>Nous proposons des chaînes en SD, HD, Full HD et parfois en 4K, selon votre connexion internet.</p>
+                        Nous proposons des chaînes en SD, HD, Full HD et parfois en 4K, selon votre connexion internet.
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-question">4. Que faire si j'ai un problème ?</div>
+                    <div class="faq-question">
+                        4. Que faire si j'ai un problème ?
+                    </div>
                     <div class="faq-answer">
-                        <p>Notre équipe de support est disponible via WhatsApp 24/24 pour vous aider rapidement.</p>
+                        Notre équipe de support est disponible via WhatsApp 24/24 pour vous aider rapidement.
                     </div>
                 </div>
                 
-                <button class="back-btn" onclick="showPage('page1')">
-                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour à l'accueil
-                </button>
+                <a href="https://wa.me/212698649074" target="_blank" rel="noopener" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Contacter le support
+                </a>
             </main>
+            
+            <div class="step-indicator">
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step active"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+            </div>
         </section>
         
         <!-- Page 10 (Politique de confidentialité) -->
@@ -1248,10 +1378,32 @@
                 
                 <p>Vous pouvez demander la suppression de vos données en nous contactant via WhatsApp.</p>
                 
-                <button class="back-btn" onclick="showPage('page1')">
-                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour à l'accueil
-                </button>
+                <div class="message">
+                    <h2><i class="fas fa-shield-alt" aria-hidden="true"></i> Protection des données</h2>
+                    <p>Nous utilisons le chiffrement et des serveurs sécurisés pour protéger vos informations. Vos données ne sont accessibles qu'à notre équipe technique.</p>
+                    <p>Notre objectif est de vous garantir une expérience fiable et sûre.</p>
+                </div>
+                
+                <a href="https://wa.me/212698649074" target="_blank" rel="noopener" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Nous contacter
+                </a>
             </main>
+            
+            <div class="step-indicator">
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step active"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+            </div>
         </section>
         
         <!-- Page 11 (Sécurité des données) -->
@@ -1263,10 +1415,45 @@
                 
                 <p>Notre objectif est de vous garantir une expérience fiable et sûre.</p>
                 
-                <button class="back-btn" onclick="showPage('page1')">
-                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour à l'accueil
-                </button>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-lock" aria-hidden="true"></i>
+                        <h3>Chiffrement</h3>
+                        <p>Toutes les données sont cryptées</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-server" aria-hidden="true"></i>
+                        <h3>Serveurs sécurisés</h3>
+                        <p>Hébergement avec haute sécurité</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-user-shield" aria-hidden="true"></i>
+                        <h3>Accès limité</h3>
+                        <p>Seule l'équipe technique y a accès</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                        <h3>Sauvegardes</h3>
+                        <p>Sauvegardes régulières des données</p>
+                    </div>
+                </div>
             </main>
+            
+            <div class="step-indicator">
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step active"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+            </div>
         </section>
         
         <!-- Page 12 (Mentions légales) -->
@@ -1274,30 +1461,54 @@
             <main class="content">
                 <h1>Mentions légales et Avertissement</h1>
                 
-                <h2>1. Informations légales</h2>
-                <p>Ce site est exploité par IPTV Provider.
-                Notre objectif est de fournir un service d'abonnement IPTV légal et conforme aux réglementations en vigueur.</p>
+                <div class="message">
+                    <h2><i class="fas fa-gavel" aria-hidden="true"></i> 1. Informations légales</h2>
+                    <p>Ce site est exploité par IPTV Provider.</p>
+                    <p>Notre objectif est de fournir un service d'abonnement IPTV légal et conforme aux réglementations en vigueur.</p>
+                </div>
                 
-                <h2>2. Utilisation des services</h2>
-                <p>L'utilisateur s'engage à utiliser le service uniquement dans un cadre légal. IPTV Provider n'est pas responsable de toute utilisation frauduleuse ou illégale faite par le client.</p>
+                <div class="message">
+                    <h2><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> 2. Utilisation des services</h2>
+                    <p>L'utilisateur s'engage à utiliser le service uniquement dans un cadre légal. IPTV Provider n'est pas responsable de toute utilisation frauduleuse ou illégale faite par le client.</p>
+                </div>
                 
-                <h2>3. Droits d'auteur</h2>
-                <p>Nous respectons les droits d'auteur et les licenses de diffusion. Si vous êtes titulaire de droits sur un contenu diffusé via notre service et souhaitez le faire retirer, veuillez nous contacter.</p>
+                <div class="message">
+                    <h2><i class="fas fa-copyright" aria-hidden="true"></i> 3. Droits d'auteur</h2>
+                    <p>Nous respectons les droits d'auteur et les licences de diffusion. Si vous êtes titulaire de droits sur un contenu diffusé via notre service et souhaitez le faire retirer, veuillez nous contacter.</p>
+                </div>
                 
-                <h2>4. Limitation de responsabilité</h2>
-                <p>Malgré nos efforts pour assurer la disponibilité du service, nous ne garantissons pas l'absence d'interruptions ou d'erreurs techniques.
-                IPTV Provider ne pourra être tenu responsable des pertes ou dommages résultant de l'utilisation ou de l'indisponibilité temporaire de la plateforme.</p>
+                <div class="message">
+                    <h2><i class="fas fa-balance-scale" aria-hidden="true"></i> 4. Limitation de responsabilité</h2>
+                    <p>Malgré nos efforts pour assurer la disponibilité du service, nous ne garantissons pas l'absence d'interruptions ou d'erreurs techniques.</p>
+                    <p>IPTV Provider ne pourra être tenu responsable des pertes ou dommages résultant de l'utilisation ou de l'indisponibilité temporaire de la plateforme.</p>
+                </div>
                 
-                <h2>5. Protection des données</h2>
-                <p>Toutes les informations personnelles sont traitées conformément à notre Politique de Confidentialité.</p>
+                <div class="message">
+                    <h2><i class="fas fa-database" aria-hidden="true"></i> 5. Protection des données</h2>
+                    <p>Toutes les informations personnelles sont traitées conformément à notre Politique de Confidentialité.</p>
+                </div>
                 
-                <h2>6. Contact</h2>
-                <p>Pour toute question concernant les mentions légales ou signalement de contente, veuillez nous contacter via WhatsApp ou par e-mail.</p>
-                
-                <button class="back-btn" onclick="showPage('page1')">
-                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour à l'accueil
-                </button>
+                <div class="message">
+                    <h2><i class="fas fa-envelope" aria-hidden="true"></i> 6. Contact</h2>
+                    <p>Pour toute question concernant les mentions légales ou signalement de contenu, veuillez nous contacter via WhatsApp ou par e-mail.</p>
+                </div>
             </main>
+            
+            <div class="step-indicator">
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step active"></div>
+                <div class="step"></div>
+            </div>
         </section>
         
         <!-- Page 13 (Contact) -->
@@ -1305,9 +1516,9 @@
             <main class="content">
                 <h1>Contact</h1>
                 
-                <p>N'hésitez pas à nous contacter pour toute question, problème technique ou demande d'information supplémentaire.</p>
+                <p>Pour toute question, problème technique ou demande d'assistance, n'hésitez pas à nous contacter en utilisant le formulaire ci-dessous.</p>
                 
-                <form class="contact-form" id="contactForm">
+                <form id="contactForm" class="contact-form">
                     <div class="form-group">
                         <label for="name" class="form-label">Votre nom</label>
                         <input type="text" id="name" class="form-input" required>
@@ -1319,46 +1530,56 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="message" class="form-label">Votre message</label>
+                        <label for="subject" class="form-label">Sujet</label>
+                        <input type="text" id="subject" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
                         <textarea id="message" class="form-textarea" required></textarea>
                     </div>
                     
-                    <button type="submit" class="form-submit">Envoyer le message</button>
+                    <button type="submit" class="btn">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i> Envoyer le message
+                    </button>
                 </form>
                 
-                <div class="contact-options">
-                    <div class="contact-option">
-                        <i class="fas fa-envelope" aria-hidden="true"></i>
-                        <h3>Email</h3>
-                        <p>iptvwebos@gmail.com</p>
-                    </div>
-                    
-                    <div class="contact-option">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                        <h3>WhatsApp</h3>
-                        <p>00212698649074</p>
-                        <a href="https://wa.me/212698649074" target="_blank" rel="noopener" class="btn btn-whatsapp" style="margin-top: 10px;">
-                            <i class="fab fa-whatsapp" aria-hidden="true"></i> Nous contacter
-                        </a>
-                    </div>
+                <div class="message" style="margin-top: 20px;">
+                    <h2><i class="fab fa-whatsapp" aria-hidden="true"></i> Contact WhatsApp</h2>
+                    <p>Vous pouvez également nous contacter directement via WhatsApp pour une réponse plus rapide :</p>
+                    <a href="https://wa.me/212698649074" target="_blank" rel="noopener" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> Contacter sur WhatsApp
+                    </a>
                 </div>
-                
-                <button class="back-btn" onclick="showPage('page1')">
-                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour à l'accueil
-                </button>
             </main>
+            
+            <div class="step-indicator">
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step"></div>
+                <div class="step active"></div>
+            </div>
         </section>
     </div>
 
-    <!-- Footer avec menu de navigation -->
-    <footer class="footer">
+    <!-- Menu Footer -->
+    <footer class="footer-menu">
         <nav class="footer-nav">
-            <a href="#" class="footer-link" onclick="showPage('page8'); return false;">À propos</a>
-            <a href="#" class="footer-link" onclick="showPage('page9'); return false;">FAQ</a>
-            <a href="#" class="footer-link" onclick="showPage('page10'); return false;">Confidentialité</a>
-            <a href="#" class="footer-link" onclick="showPage('page11'); return false;">Sécurité</a>
-            <a href="#" class="footer-link" onclick="showPage('page12'); return false;">Mentions légales</a>
-            <a href="#" class="footer-link" onclick="showPage('page13'); return false;">Contact</a>
+            <a href="#" class="footer-link" data-target="page8">À propos</a>
+            <a href="#" class="footer-link" data-target="page9">FAQ</a>
+            <a href="#" class="footer-link" data-target="page10">Confidentialité</a>
+            <a href="#" class="footer-link" data-target="page11">Sécurité</a>
+            <a href="#" class="footer-link" data-target="page12">Mentions légales</a>
+            <a href="#" class="footer-link" data-target="page13">Contact</a>
         </nav>
     </footer>
 
@@ -1366,6 +1587,19 @@
     <button id="floatingBackBtn" class="floating-back-btn" style="display: none;">
         <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour
     </button>
+
+    <!-- Bannière Cookies -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <i class="fas fa-cookie-bite"></i> Nous utilisons des cookies pour améliorer votre expérience. En continuant à naviguer, vous acceptez notre utilisation des cookies.
+            </div>
+            <div class="cookie-buttons">
+                <button id="cookieAccept" class="cookie-btn cookie-accept">Accepter</button>
+                <button id="cookieReject" class="cookie-btn cookie-reject">Refuser</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal pour afficher les vidéos YouTube -->
     <div id="videoModal" class="modal">
@@ -1408,16 +1642,13 @@
             const pageNumber = parseInt(pageId.replace('page', ''));
             const steps = document.querySelectorAll('.step');
             
-            // Ne mettre à jour que les indicateurs des pages 1 à 7
-            if (pageNumber <= 7 && steps.length > 0) {
-                steps.forEach((step, index) => {
-                    if (index < pageNumber) {
-                        step.classList.add('active');
-                    } else {
-                        step.classList.remove('active');
-                    }
-                });
-            }
+            steps.forEach((step, index) => {
+                if (index < pageNumber) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
         }
         
         // Fonction pour gérer l'affichage et le comportement du bouton flottant
@@ -1432,14 +1663,6 @@
                     return;
                 case 'page2':
                 case 'page7':
-                    targetPage = 'page1';
-                    break;
-                case 'page3':
-                case 'page4':
-                case 'page5':
-                case 'page6':
-                    targetPage = 'page2';
-                    break;
                 case 'page8':
                 case 'page9':
                 case 'page10':
@@ -1447,6 +1670,12 @@
                 case 'page12':
                 case 'page13':
                     targetPage = 'page1';
+                    break;
+                case 'page3':
+                case 'page4':
+                case 'page5':
+                case 'page6':
+                    targetPage = 'page2';
                     break;
             }
             
@@ -1545,23 +1774,65 @@
             });
         }
         
-        // Gestionnaire pour le formulaire de contact
-        function handleContactForm(event) {
-            event.preventDefault();
+        // Gestion des cookies
+        function manageCookies() {
+            const cookieBanner = document.getElementById('cookieBanner');
+            const cookieAccept = document.getElementById('cookieAccept');
+            const cookieReject = document.getElementById('cookieReject');
             
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            // Vérifier si l'utilisateur a déjà fait un choix
+            if (!localStorage.getItem('cookiesAccepted')) {
+                cookieBanner.style.display = 'block';
+            }
             
-            // Envoyer le message par email (simulation)
-            const mailtoLink = `mailto:iptvwebos@gmail.com?subject=Message de ${encodeURIComponent(name)}&body=${encodeURIComponent(message + "\n\nDe: " + email)}`;
-            window.location.href = mailtoLink;
+            // Gestion du bouton Accepter
+            cookieAccept.addEventListener('click', () => {
+                localStorage.setItem('cookiesAccepted', 'true');
+                cookieBanner.style.display = 'none';
+            });
             
-            // Réinitialiser le formulaire
-            document.getElementById('contactForm').reset();
+            // Gestion du bouton Refuser
+            cookieReject.addEventListener('click', () => {
+                localStorage.setItem('cookiesAccepted', 'false');
+                cookieBanner.style.display = 'none';
+            });
+        }
+        
+        // Gestion du formulaire de contact
+        function setupContactForm() {
+            const contactForm = document.getElementById('contactForm');
             
-            // Afficher un message de confirmation
-            alert('Votre message a été envoyé avec succès! Nous vous répondrons dès que possible.');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Récupérer les données du formulaire
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    subject: document.getElementById('subject').value,
+                    message: document.getElementById('message').value
+                };
+                
+                // Envoyer les données via Formspree (vous devez créer un compte et remplacer l'URL)
+                fetch('https://formspree.io/f/xyzdokoy', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Votre message a été envoyé avec succès !');
+                        contactForm.reset();
+                    } else {
+                        throw new Error('Erreur lors de l\'envoi du message');
+                    }
+                })
+                .catch(error => {
+                    alert('Une erreur s\'est produite. Veuillez réessayer ou nous contacter via WhatsApp.');
+                });
+            });
         }
         
         // Attendre que le DOM soit chargé
@@ -1607,6 +1878,15 @@
                     this.style.background = '';
                     this.style.borderColor = '';
                 }, {passive: true});
+            });
+            
+            // Gestionnaires pour les liens du footer
+            document.querySelectorAll('.footer-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetPage = this.getAttribute('data-target');
+                    showPage(targetPage);
+                });
             });
             
             // Gestionnaires pour les miniatures YouTube
@@ -1663,8 +1943,11 @@
             // Initialiser l'affichage du bouton flottant pour la page active
             updateFloatingBackButton('page1');
             
-            // Ajouter le gestionnaire pour le formulaire de contact
-            document.getElementById('contactForm').addEventListener('submit', handleContactForm);
+            // Initialiser la gestion des cookies
+            manageCookies();
+            
+            // Initialiser le formulaire de contact
+            setupContactForm();
         });
     </script>
 </body>
