@@ -19,6 +19,7 @@
             --button-gradient: linear-gradient(to right, #ff416c, #ff4b2b);
             --whatsapp-gradient: linear-gradient(to right, #25d366, #128c7e);
             --channels-gradient: linear-gradient(to right, #9C27B0, #673AB7);
+            --about-gradient: linear-gradient(to right, #4CAF50, #8BC34A);
             --price-gradient: linear-gradient(135deg, #ffcc00, #ff9800);
             --header-gradient: linear-gradient(to right, #4fc3f7, #0288d1);
             --text-light: #ffffff;
@@ -36,8 +37,9 @@
             color: var(--text-light);
             min-height: 100vh;
             overflow-x: hidden;
-            padding-bottom: 70px;
+            padding-bottom: 120px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
         }
         
         /* Structure de mise en page */
@@ -121,16 +123,16 @@
         .btn {
             display: block;
             width: 100%;
-            padding: 16px;
+            padding: 18px;
             background: var(--button-gradient);
             color: var(--text-light);
             text-align: center;
-            font-size: clamp(16px, 3vw, 20px);
+            font-size: clamp(16px, 3vw, 18px);
             font-weight: bold;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            margin: 25px 0;
+            margin: 15px 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             text-decoration: none;
@@ -155,6 +157,28 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+        }
+        
+        .btn-about {
+            background: var(--about-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        /* Groupe de boutons côte à côte */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .button-group .btn {
+            flex: 1 1 calc(50% - 15px);
+            min-width: 200px;
+            margin: 0;
         }
         
         /* Plateformes */
@@ -484,6 +508,136 @@
             color: var(--text-yellow);
         }
         
+        /* FAQ Styles */
+        .faq-item {
+            margin-bottom: 20px;
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            color: var(--text-yellow);
+            margin-bottom: 10px;
+            font-size: clamp(16px, 2.5vw, 18px);
+        }
+        
+        .faq-answer {
+            padding-left: 15px;
+            border-left: 3px solid var(--text-blue);
+        }
+        
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            z-index: 999;
+            backdrop-filter: blur(5px);
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: clamp(12px, 2.5vw, 14px);
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover, .footer-link:focus {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-yellow);
+        }
+        
+        /* Formulaire de contact */
+        .contact-form {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-input, .form-textarea {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 16px;
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--text-blue);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            background: var(--button-gradient);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .form-submit:hover, .form-submit:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .contact-option {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .contact-option i {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--text-blue);
+        }
+        
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -537,6 +691,19 @@
                 padding: 10px 16px;
                 font-size: 14px;
             }
+            
+            .footer-nav {
+                gap: 8px;
+            }
+            
+            .footer-link {
+                padding: 4px 8px;
+                font-size: 11px;
+            }
+            
+            .button-group .btn {
+                flex: 1 1 100%;
+            }
         }
         
         /* Téléphones (portrait) */
@@ -557,6 +724,18 @@
             .channels-list {
                 grid-template-columns: 1fr;
             }
+            
+            .footer-nav {
+                gap: 10px;
+            }
+            
+            .footer-link {
+                font-size: 12px;
+            }
+            
+            .button-group .btn {
+                flex: 1 1 100%;
+            }
         }
         
         /* Téléphones (paysage) et petites tablettes */
@@ -571,6 +750,14 @@
             
             .channels-list {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-nav {
+                gap: 12px;
+            }
+            
+            .button-group .btn {
+                flex: 1 1 calc(50% - 15px);
             }
         }
         
@@ -591,6 +778,10 @@
             .channels-list {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .button-group .btn {
+                flex: 1 1 calc(50% - 15px);
+            }
         }
         
         /* Grands écrans */
@@ -609,6 +800,10 @@
             
             .channels-list {
                 grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .button-group .btn {
+                flex: 1 1 calc(50% - 15px);
             }
         }
         
@@ -664,6 +859,16 @@
                 transform: translateY(-3px);
                 background: rgba(0, 0, 0, 0.9);
             }
+            
+            .footer-link:hover {
+                background: transparent;
+                color: var(--text-light);
+            }
+            
+            .footer-link:active {
+                background: rgba(255, 255, 255, 0.1);
+                color: var(--text-yellow);
+            }
         }
     </style>
 </head>
@@ -672,7 +877,7 @@
         <!-- Page 1 -->
         <section id="page1" class="page active">
             <header class="header">
-                <img src="https://raw.githubusercontent.com/iptvwebos-stack/repo/refs/heads/main/headerimage.webp?auto=format&fit=crop&w=600&h=300" alt="IPTV Premium - Accédez à des milliers de chaînes">
+                <img src="https://images.unsplash.com/photo-1603383928962-8e4c308a81e3?auto=format&fit=crop&w=600&h=300" alt="IPTV Premium - Accédez à des milliers de chaînes">
             </header>
             
             <main class="content">
@@ -682,9 +887,15 @@
                     Seulement 200 Dhs / An
                 </div>
                 
-                <button id="channelsBtn" class="btn btn-channels">
-                    <i class="fas fa-list" aria-hidden="true"></i> Liste des chaines & VOD & Séries
-                </button>
+                <div class="button-group">
+                    <button id="channelsBtn" class="btn btn-channels">
+                        <i class="fas fa-list" aria-hidden="true"></i> Liste des chaines & VOD & Séries
+                    </button>
+                    
+                    <button id="aboutBtn" class="btn btn-about">
+                        <i class="fas fa-info-circle" aria-hidden="true"></i> À propos de nous
+                    </button>
+                </div>
                 
                 <p>Profitez d'une expérience de divertissement exceptionnelle avec notre abonnement IPTV premium. Accédez à des milliers de chaînes et contenus du monde entier.</p>
                 
@@ -968,7 +1179,188 @@
                 <div class="step active"></div>
             </div>
         </section>
+        
+        <!-- Page 8 (À propos de nous) -->
+        <section id="page8" class="page">
+            <main class="content">
+                <h1>À propos de nous</h1>
+                
+                <p>Bienvenue sur IPTV Provider! Notre mission est de rendre la télévision accessible à tous, où que vous soyez.
+                Nous proposons un service IPTV qui vous permet de profiter de vos chaînes préférées, films, séries et événements sportifs en direct avec une qualité exceptionnelle.</p>
+                
+                <p>Notre équipe est passionnée par la technologie et l'innovation : nous travaillons chaque jour pour vous offrir la meilleure expérience possible, avec une installation simple et un support réactif.</p>
+                
+                <p>Rejoignez dès aujourd'hui notre communauté d'abonnés et découvrez une nouvelle façon de regarder la télévision !</p>
+                
+                <button class="back-btn" onclick="showPage('page1')">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour à l'accueil
+                </button>
+            </main>
+        </section>
+        
+        <!-- Page 9 (FAQ) -->
+        <section id="page9" class="page">
+            <main class="content">
+                <h1>FAQ - Questions fréquentes</h1>
+                
+                <div class="faq-item">
+                    <div class="faq-question">1. Comment puis-je m'abonner ?</div>
+                    <div class="faq-answer">
+                        <p>Choisissez votre formule, installez l'application sur votre appareil, puis envoyez-nous votre adresse MAC ou Device Key sur WhatsApp.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">2. Sur quels appareils fonctionne le service ?</div>
+                    <div class="faq-answer">
+                        <p>Notre service fonctionne sur Smart TV (Samsung, LG), Box Android, récepteurs compatibles, ordinateurs et smartphones.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">3. Quelle est la qualité des chaînes ?</div>
+                    <div class="faq-answer">
+                        <p>Nous proposons des chaînes en SD, HD, Full HD et parfois en 4K, selon votre connexion internet.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">4. Que faire si j'ai un problème ?</div>
+                    <div class="faq-answer">
+                        <p>Notre équipe de support est disponible via WhatsApp 24/24 pour vous aider rapidement.</p>
+                    </div>
+                </div>
+                
+                <button class="back-btn" onclick="showPage('page1')">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour à l'accueil
+                </button>
+            </main>
+        </section>
+        
+        <!-- Page 10 (Politique de confidentialité) -->
+        <section id="page10" class="page">
+            <main class="content">
+                <h1>Politique de confidentialité</h1>
+                
+                <p>Chez IPTV Provider, nous respectons votre vie privée. Les données collectées (adresse MAC, Device Key, Nom complet) servent uniquement à activer votre abonnement.</p>
+                
+                <p>Nous ne partageons pas vos informations avec des tiers. Toutes les communications sont sécurisées et nous protégeons vos données contre tout accès non autorisé.</p>
+                
+                <p>Vous pouvez demander la suppression de vos données en nous contactant via WhatsApp.</p>
+                
+                <button class="back-btn" onclick="showPage('page1')">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour à l'accueil
+                </button>
+            </main>
+        </section>
+        
+        <!-- Page 11 (Sécurité des données) -->
+        <section id="page11" class="page">
+            <main class="content">
+                <h1>Sécurité des données</h1>
+                
+                <p>Nous utilisons le chiffrement et des serveurs sécurisés pour protéger vos informations. Vos données ne sont accessibles qu'à notre équipe technique.</p>
+                
+                <p>Notre objectif est de vous garantir une expérience fiable et sûre.</p>
+                
+                <button class="back-btn" onclick="showPage('page1')">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour à l'accueil
+                </button>
+            </main>
+        </section>
+        
+        <!-- Page 12 (Mentions légales) -->
+        <section id="page12" class="page">
+            <main class="content">
+                <h1>Mentions légales et Avertissement</h1>
+                
+                <h2>1. Informations légales</h2>
+                <p>Ce site est exploité par IPTV Provider.
+                Notre objectif est de fournir un service d'abonnement IPTV légal et conforme aux réglementations en vigueur.</p>
+                
+                <h2>2. Utilisation des services</h2>
+                <p>L'utilisateur s'engage à utiliser le service uniquement dans un cadre légal. IPTV Provider n'est pas responsable de toute utilisation frauduleuse ou illégale faite par le client.</p>
+                
+                <h2>3. Droits d'auteur</h2>
+                <p>Nous respectons les droits d'auteur et les licenses de diffusion. Si vous êtes titulaire de droits sur un contenu diffusé via notre service et souhaitez le faire retirer, veuillez nous contacter.</p>
+                
+                <h2>4. Limitation de responsabilité</h2>
+                <p>Malgré nos efforts pour assurer la disponibilité du service, nous ne garantissons pas l'absence d'interruptions ou d'erreurs techniques.
+                IPTV Provider ne pourra être tenu responsable des pertes ou dommages résultant de l'utilisation ou de l'indisponibilité temporaire de la plateforme.</p>
+                
+                <h2>5. Protection des données</h2>
+                <p>Toutes les informations personnelles sont traitées conformément à notre Politique de Confidentialité.</p>
+                
+                <h2>6. Contact</h2>
+                <p>Pour toute question concernant les mentions légales ou signalement de contente, veuillez nous contacter via WhatsApp ou par e-mail.</p>
+                
+                <button class="back-btn" onclick="showPage('page1')">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour à l'accueil
+                </button>
+            </main>
+        </section>
+        
+        <!-- Page 13 (Contact) -->
+        <section id="page13" class="page">
+            <main class="content">
+                <h1>Contact</h1>
+                
+                <p>N'hésitez pas à nous contacter pour toute question, problème technique ou demande d'information supplémentaire.</p>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Votre nom</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Votre email</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Votre message</label>
+                        <textarea id="message" class="form-textarea" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">Envoyer le message</button>
+                </form>
+                
+                <div class="contact-options">
+                    <div class="contact-option">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <h3>Email</h3>
+                        <p>iptvwebos@gmail.com</p>
+                    </div>
+                    
+                    <div class="contact-option">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        <h3>WhatsApp</h3>
+                        <p>00212698649074</p>
+                        <a href="https://wa.me/212698649074" target="_blank" rel="noopener" class="btn btn-whatsapp" style="margin-top: 10px;">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i> Nous contacter
+                        </a>
+                    </div>
+                </div>
+                
+                <button class="back-btn" onclick="showPage('page1')">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Retour à l'accueil
+                </button>
+            </main>
+        </section>
     </div>
+
+    <!-- Footer avec menu de navigation -->
+    <footer class="footer">
+        <nav class="footer-nav">
+            <a href="#" class="footer-link" onclick="showPage('page8'); return false;">À propos</a>
+            <a href="#" class="footer-link" onclick="showPage('page9'); return false;">FAQ</a>
+            <a href="#" class="footer-link" onclick="showPage('page10'); return false;">Confidentialité</a>
+            <a href="#" class="footer-link" onclick="showPage('page11'); return false;">Sécurité</a>
+            <a href="#" class="footer-link" onclick="showPage('page12'); return false;">Mentions légales</a>
+            <a href="#" class="footer-link" onclick="showPage('page13'); return false;">Contact</a>
+        </nav>
+    </footer>
 
     <!-- Bouton de retour flottant -->
     <button id="floatingBackBtn" class="floating-back-btn" style="display: none;">
@@ -1016,13 +1408,16 @@
             const pageNumber = parseInt(pageId.replace('page', ''));
             const steps = document.querySelectorAll('.step');
             
-            steps.forEach((step, index) => {
-                if (index < pageNumber) {
-                    step.classList.add('active');
-                } else {
-                    step.classList.remove('active');
-                }
-            });
+            // Ne mettre à jour que les indicateurs des pages 1 à 7
+            if (pageNumber <= 7 && steps.length > 0) {
+                steps.forEach((step, index) => {
+                    if (index < pageNumber) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+            }
         }
         
         // Fonction pour gérer l'affichage et le comportement du bouton flottant
@@ -1044,6 +1439,14 @@
                 case 'page5':
                 case 'page6':
                     targetPage = 'page2';
+                    break;
+                case 'page8':
+                case 'page9':
+                case 'page10':
+                case 'page11':
+                case 'page12':
+                case 'page13':
+                    targetPage = 'page1';
                     break;
             }
             
@@ -1142,6 +1545,25 @@
             });
         }
         
+        // Gestionnaire pour le formulaire de contact
+        function handleContactForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Envoyer le message par email (simulation)
+            const mailtoLink = `mailto:iptvwebos@gmail.com?subject=Message de ${encodeURIComponent(name)}&body=${encodeURIComponent(message + "\n\nDe: " + email)}`;
+            window.location.href = mailtoLink;
+            
+            // Réinitialiser le formulaire
+            document.getElementById('contactForm').reset();
+            
+            // Afficher un message de confirmation
+            alert('Votre message a été envoyé avec succès! Nous vous répondrons dès que possible.');
+        }
+        
         // Attendre que le DOM soit chargé
         document.addEventListener('DOMContentLoaded', function() {
             // Gestionnaire pour le bouton "Abonnez-vous Maintenant"
@@ -1152,6 +1574,11 @@
             // Gestionnaire pour le bouton "Liste des chaînes"
             document.getElementById('channelsBtn').addEventListener('click', function() {
                 showPage('page7');
+            });
+            
+            // Gestionnaire pour le bouton "À propos de nous"
+            document.getElementById('aboutBtn').addEventListener('click', function() {
+                showPage('page8');
             });
             
             // Gestionnaires pour les plateformes
@@ -1235,6 +1662,9 @@
             
             // Initialiser l'affichage du bouton flottant pour la page active
             updateFloatingBackButton('page1');
+            
+            // Ajouter le gestionnaire pour le formulaire de contact
+            document.getElementById('contactForm').addEventListener('submit', handleContactForm);
         });
     </script>
 </body>
